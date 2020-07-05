@@ -2,6 +2,6 @@
 
 module not_n2t(input in, output out);
     
-    // Put your code here
+   assign out = ~in;
 
 endmodule

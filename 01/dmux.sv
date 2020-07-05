@@ -10,6 +10,7 @@ module dmux(
     output b
 );
 
-    // Put your code here
+   assign a = ~select & in;
+   assign b = select & in;
 
 endmodule

@@ -11,7 +11,7 @@ module ram_8_tb();
 
     task assert_else_error(reg [15:0] exp_out);
         assert (out === exp_out) else begin
-            $error("ram8 %b %b %b %b (%b %b)", in, addr, load, clk, out, exp_out);
+            $error("ram8 in %b addr %b load %b clk %b (out %b exp_out %b)", in, addr, load, clk, out, exp_out);
         end
     endtask
 
@@ -20,7 +20,7 @@ module ram_8_tb();
             // load in data
 
             load = 1;
-            in = 16'b0000000000000000; addr = 3'b000; clk = 0; // addr 0
+            in = 16'b1000000000000001; addr = 3'b000; clk = 0; // addr 0
             #1 clk = 1;
 
             #1 in = 16'b1111111111111111; addr = 3'b001; clk = 0; // addr 1
@@ -49,7 +49,7 @@ module ram_8_tb();
 
             #1 addr = 3'b000; clk = 0;
             #1 clk = 1;
-            #1 assert_else_error(16'b0000000000000000);
+            #1 assert_else_error(16'b1000000000000001);
 
             #1 addr = 3'b001; clk = 0;
             #1 clk = 1;

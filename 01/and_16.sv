@@ -9,6 +9,10 @@ module and_16(
    output [15:0] out
 );
 
-    // Put your code here
-
+   genvar 	 j;
+   generate
+      for (j = 0; j < 16; j = j + 1) begin
+	 and_n2t a(.a(a[j]), .b(b[j]), .out(out[j]));
+      end
+   endgenerate
 endmodule

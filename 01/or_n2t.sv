@@ -5,6 +5,6 @@
 
 module or_n2t(input a, input b, output out);
 
-    // Put your code here
+   assign out = a | b;
 
 endmodule

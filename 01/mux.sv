@@ -9,7 +9,5 @@ module mux(
     input  select,
     output out
 );
-
-    // Put your code here
-
+   assign out = (~select & a) | (select & b);
 endmodule

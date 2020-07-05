@@ -21,6 +21,18 @@ module pc(
     output [15:0] out
 );
 
-    // Put your code here
+   wire [15:0] 	  incremented;
+
+   inc_16 increment(.in(out), .out(incremented));
+
+   wire [15:0] 	  inc_mux_output;
+   mux_16 inc_mux(.a(out), .b(incremented), .select(inc), .out(inc_mux_output));
+   wire [15:0] 	  load_mux_output;
+   mux_16 load_mux(.a(inc_mux_output), .b(in), .select(load), .out(load_mux_output));
+   wire [15:0] 	  reset_mux_output;
+   mux_16 reset_mux(.a(load_mux_output), .b(16'b0), .select(reset), .out(reset_mux_output));
+
+   register_n2t r(.in(reset_mux_output), .load(1'b1), .clk(clk), .out(out));
+   
 
 endmodule

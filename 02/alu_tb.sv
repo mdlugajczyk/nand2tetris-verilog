@@ -15,7 +15,7 @@ module alu_tb();
 
     task assert_else_error(reg [15:0] exp_out, reg exp_zr, reg exp_ng);
         assert (out == exp_out && zr == exp_zr && exp_ng == ng) else begin
-            $error("alu %b %b %b %b %b %b %b %b (%b %b) (%b %b) (%b %b)",
+            $error("alu (x %b) (y %b) (zx %b) (nx %b) (zy %b) (ny %b) (f %b) (no %b) (out %b %b) (zr %b %b) (ng %b %b)",
                 x, y, zx, nx, zy, ny, f, no, out, exp_out, zr, exp_zr, ng, exp_ng);
         end
     endtask
@@ -31,6 +31,7 @@ module alu_tb();
             f = 1;
             no = 0;
             #1 assert_else_error(16'b0000000000000000, 16'b1, 16'b0);
+	   
 
             #1 x = 16'b0000000000000000;
             y = 16'b1111111111111111;

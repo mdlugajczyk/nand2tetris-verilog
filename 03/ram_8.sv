@@ -20,6 +20,21 @@ module ram_8(
     output [15:0] out
 );
 
-    // Put your code here
-    
+   wire [7:0] 	  load_signals;
+   wire [7:0][15:0] register_outputs;
+
+   genvar 	    j;
+   generate
+      for (j = 0; j < 8; j = j + 1) begin
+	 register_n2t register(.in(in), .load(load_signals[j]), .clk(clock), .out(register_outputs[j]));
+      end
+   endgenerate
+   
+   dmux_8_way dmux_load(.in(load), .select(address),
+   			.a(load_signals[0]), .b(load_signals[1]), .c(load_signals[2]), .d(load_signals[3]), 
+   			.e(load_signals[4]), .f(load_signals[5]), .g(load_signals[6]), .h(load_signals[7]));
+   mux_8_way_16 mux_output(.a(register_outputs[0]), .b(register_outputs[1]), .c(register_outputs[2]), .d(register_outputs[3]), 
+   			.e(register_outputs[4]), .f(register_outputs[5]), .g(register_outputs[6]), .h(register_outputs[7]),
+   			.select(address), .out(out));
+   
 endmodule

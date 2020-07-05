@@ -9,6 +9,11 @@ module or_16(
     output[15:0] out
 );
 
-    // Put your code here
+   genvar 	 j;
+   generate
+      for (j = 0; j < 16; j = j + 1) begin
+	 or_n2t o(.a(a[j]), .b(b[j]), .out(out[j]));
+      end
+   endgenerate
 
 endmodule

@@ -15,7 +15,6 @@ module dmux_8_way(
     output      g,
     output      h
 );
-
-    // Put your code here
-
+   dmux_4_way d1(in & ~select[2], select[1:0], a, b, c, d);
+   dmux_4_way d2(in & select[2], select[1:0], e, f, g, h);
 endmodule

@@ -8,6 +8,11 @@ module not_16(
     output [15:0] out
 );
 
-    // Put your code here
+   genvar 	  j;
+   generate
+      for (j = 0; j < 16; j = j + 1) begin
+	 not_n2t n(.in(in[j]), .out(out[j]));
+      end
+   endgenerate
 
 endmodule

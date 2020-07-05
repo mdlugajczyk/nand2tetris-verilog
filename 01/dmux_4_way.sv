@@ -12,6 +12,6 @@ module dmux_4_way(
     output      d
 );
 
-    // Put your code here
-
+   dmux d1(in & ~sel[1], sel[0], a, b);
+   dmux d2(in & sel[1], sel[1] & sel[0], c, d);
 endmodule

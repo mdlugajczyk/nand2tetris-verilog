@@ -10,6 +10,7 @@ module half_adder(
     output sum
 );
 
-    // Put your code here
+   xor_n2t sum_gate(.a(a), .b(b), .out(sum));
+   and_n2t carry_gate(.a(a), .b(b), .out(carry));
 
 endmodule

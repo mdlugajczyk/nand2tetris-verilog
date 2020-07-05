@@ -10,7 +10,7 @@ module bit_n2t_tb();
 
     task assert_else_error(exp_out);
         assert (out == exp_out) else begin
-            $error("bit %b %b %b (%b %b)", in, load, clk, out, exp_out);
+            $error("in %b load %b clk %b (out %b exp_out %b)", in, load, clk, out, exp_out);
         end
     endtask
 

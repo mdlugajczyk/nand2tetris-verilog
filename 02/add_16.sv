@@ -9,6 +9,16 @@ module add_16(
     output [15:0] out
 );
 
-    // Put your code here
-    
+   wire[15:0] 	  carry;
+   reg 		  zero;
+
+   full_adder a1(.a(a[0]), .b(b[0]), .c(1'b0), .carry(carry[0]), .sum(out[0]));
+
+   genvar 	  j;
+   generate
+      for (j = 1; j < 16; j = j + 1) begin
+	 full_adder adder(.a(a[j]), .b(b[j]), .c(carry[j-1]), .carry(carry[j]), .sum(out[j]));
+      end
+
+   endgenerate
 endmodule

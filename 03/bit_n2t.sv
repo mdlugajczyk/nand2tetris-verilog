@@ -13,6 +13,9 @@ module bit_n2t(
     output out
 );
 
-    // Put your code here
+   wire    dff_input, dff_output;
+   
+   mux m(.a(out), .b(in), .select(load), .out(dff_input));
+   dff d(.in(dff_input), .clk(clk), .out(out));
 
 endmodule
